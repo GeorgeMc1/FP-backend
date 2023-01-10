@@ -56,14 +56,14 @@ exports.updateUser = async (req, res) => {
 		// define the filter
 		const filter = { username: req.body.username };
 		// define the field that is being updated
-		const update = { [req.body.field]: req.body.value };
+		const update = { [req.body.key]: req.body.value };
 
 		let updatedUser = await User.findOneAndUpdate(filter, update, {
 			new: true // returns the updated values
 		});
 		console.log(updatedUser);
 		res.status(200).send({
-			message: `the ${req.body.field} has been updated to ${req.body.value}`
+			message: `the ${req.body.key} has been updated to ${req.body.value}`
 		});
 	} catch (error) {
 		console.log(error);
