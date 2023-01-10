@@ -24,3 +24,17 @@ exports.deleteUser = async (req, res) => {
         res.status(500).send({error: error.message});
     }
 }
+
+exports.loginUser = async (req, res) => {
+    try{
+        if (req.authUser) {
+            console.log("token check passwed and continue to persistant login");
+            res.staus(200).send({username: req.authUser.username});
+        }
+        const token = await jwt.sign({id_: req.user._id}, process.env.SECRET);
+        res.status(200).send({username: req.user.username, token});
+    } catch(error){
+        console.log(error);
+        res.status(500).send({error: error.message});
+    }
+}
