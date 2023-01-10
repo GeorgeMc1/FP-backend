@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("./userModel");
 
-exports.createAccount = async (req, res) => {
+exports.createUser = async (req, res) => {
 	try {
 		await User.create(req.body);
 		res.status(201).send({
@@ -51,7 +51,7 @@ exports.loginUser = async (req, res) => {
 	}
 };
 
-exports.updateDetails = async (req, res) => {
+exports.updateUser = async (req, res) => {
 	try {
 		// define the filter
 		const filter = { username: req.body.username };
