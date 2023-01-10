@@ -1,6 +1,7 @@
 const {Router} = require("express");
 const {createUser, readUsers, updateUser, deleteUser, loginUser} = require("./userControllers");
 const {hashPass, checkPass, checkToken, verifyPassword, verifyEmail} = require("../middleware");
+const {verifyPassword, verifyEmail} = require("../middleware/Validations");
 
 const userRouter = Router();
 
