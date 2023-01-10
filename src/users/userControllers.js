@@ -15,6 +15,16 @@ exports.createAccount = async (req, res) => {
 	}
 };
 
+exports.readUsers = async (req, res) => {
+    try{
+        const users = await User.find(req.body);
+        res.status(200).send({users: users});
+    } catch(error){
+        console.log(error);
+        res.status(500).send({error: error.message});
+    }
+}
+
 exports.deleteUser = async (req, res) => {
     try{
         await User.deleteOne({username: req.body.username});
