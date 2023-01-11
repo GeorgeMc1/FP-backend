@@ -22,7 +22,7 @@ exports.hashPass = async (req, res, next) => {
 
 exports.checkPass = async (req, res, next) => {
     try{
-        req.user = await User.findOne({uesrname: req.body.username});
+        req.user = await User.findOne({username: req.body.username});
         if(req.user && await bcrypt.compare(req.body.password, req.user.password)){
             console.log("password is correct");
             next();
@@ -42,8 +42,8 @@ exports.checkToken = async (req, res, next) => {
             throw new Error("no token passed");
         }
         const token = req.header("Authorization").replace("Bearer ", "");
-        const decodedToken = await jwt.verify(token, procss.env.SECRET);
-        req.user = await User.findByIf(decodedToken._id);
+        const decodedToken = await jwt.verify(token, process.env.SECRET);
+        req.user = await User.findById(decodedToken.id_);
         if(req.user){
             req.authUser = req.user;
             next();
