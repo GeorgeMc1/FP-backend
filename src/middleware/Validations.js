@@ -23,8 +23,7 @@ exports.matchEmail = async (req, res, next) => {
 
 exports.verifyEmail = async (req, res, next) => {
 	try {
-		const reg =
-			/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(.?)$/;
+		const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(\.?)$/;
 		const email = req.body.email;
 		if (reg.test(email)) {
 			console.log("the emails format is valid");
@@ -41,14 +40,14 @@ exports.verifyEmail = async (req, res, next) => {
 
 exports.verifyPassword = async (req, res, next) => {
 	try {
-		const reg = /^(?=.[A-Z])(?=.\d)[A-Za-z\d]{8,}$/;
+		const reg = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 		const password = req.body.password;
 		if (reg.test(password)) {
-			console.log("the emails or passwords format is valid");
+			console.log("the passwords format is valid");
 			next();
 		} else {
 			// throw an error if entered emails format is not valid
-			throw Error("please enter a valid username or email");
+			throw Error("please enter a valid password");
 		}
 	} catch (error) {
 		console.log(error);
