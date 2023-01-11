@@ -7,8 +7,8 @@ const userRouter = Router();
 
 userRouter.post("/createUser", verifyPassword, verifyEmail, hashPass, createUser);
 userRouter.post("/loginUser", checkPass, loginUser);
-userRouter.post("/readUser", checkToken, readUsers);
-userRouter.put("/updateUser", checkToken, verifyPassword, hashPass, verifyEmail, updateUser);
+userRouter.post("/readUser", readUsers);
+userRouter.put("/updateUser", verifyPassword, hashPass, verifyEmail, updateUser);
 userRouter.delete("/deleteUser", checkToken, deleteUser);
 userRouter.get("/authCheck", checkToken, loginUser);
 
