@@ -17,7 +17,7 @@ exports.matchEmail = async (req, res, next) => {
 		}
 	} catch (error) {
 		console.log(error);
-		res.status(500).send({ error: error.message });
+		res.status(500).send({ success:false,error: error.message });
 	}
 };
 
@@ -40,7 +40,7 @@ exports.verifyEmail = async (req, res, next) => {
 			}
 		} catch (error) {
 			console.log(error);
-			res.status(500).send({ error: error.message });
+			res.status(500).send({success:false, error: error.message });
 		}
 	} else {
 		next();
@@ -66,7 +66,7 @@ exports.verifyPassword = async (req, res, next) => {
 			}
 		} catch (error) {
 			console.log(error);
-			res.status(500).send({ error: error.message });
+			res.status(500).send({ success:false,error: error.message });
 		}
 	} else {
 		next();

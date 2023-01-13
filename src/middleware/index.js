@@ -13,7 +13,7 @@ exports.hashPass = async (req, res, next) => {
             next();
         } catch(error){
             console.log(error);
-            res.status(500).send({error: error.message});
+            res.status(500).send({success: false,error: error.message});
         }
     } else {
         next();
@@ -31,7 +31,7 @@ exports.checkPass = async (req, res, next) => {
         }
     } catch(error){
         console.log(error);
-        res.status(500).send({error: error.message});
+        res.status(500).send({success: false,error: error.message});
     }
 }
 
@@ -52,6 +52,6 @@ exports.checkToken = async (req, res, next) => {
         }
     } catch(error){
         console.log(error);
-        res.status(500).send({error: error.message});
+        res.status(500).send({success: false,error: error.message});
     }
 }
