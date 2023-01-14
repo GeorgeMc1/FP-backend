@@ -76,6 +76,7 @@ exports.updateUser = async (req, res) => {
 		});
 		console.log(updatedUser);
 		res.status(200).send({
+			success:true,
 			message: `the ${req.body.key} has been updated to ${req.body.value}`,
 			key:req.body.key,
 			value:req.body.value
