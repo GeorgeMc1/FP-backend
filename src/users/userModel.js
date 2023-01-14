@@ -24,7 +24,11 @@ const userSchema = new mongoose.Schema({
     },
     favRecipes: {
         type: Array
+    },
+    books:{
+        type:Array
     }
+
 })
 const User = mongoose.model("user", userSchema);
 module.exports = User;
